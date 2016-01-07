@@ -1,0 +1,5 @@
+web:
+  build: .
+  volumes:
+    - .:/var/www/your-x-slack-bot
+  working_dir: /var/www/your-x-slack-bot
