@@ -43,7 +43,7 @@ class PokeUser
 
     public function execute(Command $command, Responder $responder)
     {
-        $user = $this->userRepository->getRandomUser();
+        $user = $this->userRepository->getRandomActiveUser();
 
         $message = $this->messageRepository->getRandomMessageForUser($user);
 
