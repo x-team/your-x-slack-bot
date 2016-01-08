@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cec000775143259bad3b6b173812d76d",
-    "content-hash": "8dd88855cadb3bf39ef28b659d844e97",
+    "hash": "b2f43197c4e8b3fbb6f2761ca291dc72",
+    "content-hash": "18118d953b969e88a7a504611037739c",
     "packages": [
         {
             "name": "cleentfaar/slack",
-            "version": "0.17.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleentfaar/slack.git",
-                "reference": "202667cbf93051f5d0eabb3351a162b0005fcf37"
+                "reference": "1f651bba5dc66f585f01e12ccc5adc0fc88dba0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleentfaar/slack/zipball/202667cbf93051f5d0eabb3351a162b0005fcf37",
-                "reference": "202667cbf93051f5d0eabb3351a162b0005fcf37",
+                "url": "https://api.github.com/repos/cleentfaar/slack/zipball/1f651bba5dc66f585f01e12ccc5adc0fc88dba0d",
+                "reference": "1f651bba5dc66f585f01e12ccc5adc0fc88dba0d",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
                 "slack",
                 "slack api"
             ],
-            "time": "2015-09-20 18:09:43"
+            "time": "2015-09-21 07:06:59"
         },
         {
             "name": "doctrine/annotations",
@@ -1570,7 +1570,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "cleentfaar/slack": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

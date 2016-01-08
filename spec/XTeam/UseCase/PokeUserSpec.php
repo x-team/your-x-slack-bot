@@ -28,7 +28,7 @@ class PokeUserSpec extends ObjectBehavior
         SlackNotifier $slackNotifier,
         Responder $responder
     ) {
-        $userRepository->getRandomUser()->willReturn($user = new User());
+        $userRepository->getRandomActiveUser()->willReturn($user = new User('id1', 'johndoe'));
 
         $messageRepository->getRandomMessageForUser($user)->willReturn($message = new Message('Test message'));
 

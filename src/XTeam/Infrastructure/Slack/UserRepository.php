@@ -2,6 +2,7 @@
 
 namespace XTeam\Infrastructure\Slack;
 
+use CL\Slack\Payload\UsersGetPresencePayload;
 use CL\Slack\Payload\UsersListPayload;
 use CL\Slack\Transport\ApiClient;
 use XTeam\Domain\Repository\UserRepository as UserRepositoryInterface;
@@ -9,6 +10,8 @@ use XTeam\Domain\User;
 
 class UserRepository implements UserRepositoryInterface
 {
+    const RANDOM_ATTEMPTS_LIMIT = 75;
+
     /**
      * @var ApiClient
      */
@@ -23,7 +26,30 @@ class UserRepository implements UserRepositoryInterface
         $this->apiClient = $apiClient;
     }
 
-    public function getRandomUser()
+    public function getRandomActiveUser()
+    {
+        $payload = new UsersGetPresencePayload();
+        $attemptsCount = 0;
+
+        while (true) {
+            if (++$attemptsCount == self::RANDOM_ATTEMPTS_LIMIT) {
+                break;
+            }
+
+            $user = $this->getRandomUser();
+
+            $payload->setUserId($user->getId());
+
+            $response = $this->apiClient->send($payload);
+            $presence = $response->getPresence();
+
+            if ($presence == User::PRESENCE_ACTIVE) {
+                return $user;
+            }
+        }
+    }
+
+    private function getRandomUser()
     {
         $payload = new UsersListPayload();
 
@@ -32,6 +58,6 @@ class UserRepository implements UserRepositoryInterface
         $users = $response->getUsers();
         $user = $users[array_rand($users)];
 
-        return new User($user->getName());
+        return User::fromSlack($user);
     }
 }
