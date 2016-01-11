@@ -4,7 +4,8 @@
         "symfony/console": "^2.8",
         "symfony/yaml": "^2.8",
         "symfony/event-dispatcher": "^2.8",
-        "cleentfaar/slack": "dev-master"
+        "cleentfaar/slack": "dev-master",
+        "symfony/config": "^3.0"
     },
     "autoload": {
         "psr-4": {
