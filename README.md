@@ -11,6 +11,17 @@ Basically, you need to have [Docker Toolbox installed](https://www.docker.com/do
 
 # How to use it?
 
+## Configuration
+
+In order to have the bot running you need to [create a Slack Bot](https://api.slack.com/bot-users). Once you have one you will be able to obtain a Slack API Token.
+Create a local set of parameters by copying the parameters file:
+
+```
+cp app/config/parameters.yml.dist app/config/parameters.yml
+```
+
+And put your token value there
+
 ## Start the environment
 
 In the project root directory run the following command:
