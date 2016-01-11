@@ -18,6 +18,13 @@ use XTeam\UseCase\PokeUser\Responder;
 class PokeUserCommand extends Command implements Responder
 {
     private $output;
+    private $config;
+
+    public function __construct($config, $name = null)
+    {
+        parent::__construct($name);
+        $this->config = $config;
+    }
 
     protected function configure()
     {
@@ -32,8 +39,7 @@ class PokeUserCommand extends Command implements Responder
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->output = $output;
-
-        $apiClient = new ApiClient('xoxb-17957916181-kbuGBaUeIVhxb7wxi6JXo1gP');
+        $apiClient = new ApiClient($this->config['slack_token']);
         $messageRepository = new InMemoryMessageRepository();
         $userRepository = new UserRepository($apiClient);
         if ($input->getOption('test')) {

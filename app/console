@@ -3,9 +3,29 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Application;
 use XTeam\Console\Command\PokeUserCommand;
+use Symfony\Component\Yaml\Yaml;
 
 $application = new Application();
-$application->add(new PokeUserCommand());
+
+$configDirectories = array(__DIR__.'/config');
+$locator = new FileLocator($configDirectories);
+try {
+    $parameters = $locator->locate('parameters.yml', null, false);
+} catch (\InvalidArgumentException $e) {
+    $parameters = $locator->locate('parameters.yml.dist', null, false);
+}
+
+$envParameters = array();
+foreach ($_SERVER as $key => $value) {
+    if (0 === strpos($key, 'YOUR_X__')) {
+        $envParameters[strtolower(str_replace('__', '.', substr($key, 8)))] = $value;
+    }
+}
+
+$config = Yaml::parse(file_get_contents(reset($parameters)));
+
+$application->add(new PokeUserCommand(array_merge($config, $envParameters)));
 $application->run();
