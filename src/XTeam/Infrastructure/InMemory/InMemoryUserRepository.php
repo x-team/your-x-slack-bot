@@ -7,8 +7,8 @@ use XTeam\Domain\User;
 
 class InMemoryUserRepository implements UserRepository
 {
-    public function getRandomUser()
+    public function getRandomActiveUser()
     {
-        return new User('karolsojko');
+        return new User('test', 'karolsojko');
     }
 }
