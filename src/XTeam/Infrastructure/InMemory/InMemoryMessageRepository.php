@@ -16,7 +16,10 @@ class InMemoryMessageRepository implements MessageRepository
         'Any good TV Series you would recommend %USERNAME%?',
         'All foodies here right? %USERNAME% snap a photo and show us your breakfast/lunch/dinner today :)!',
         'I love me some good old gaming time, any recommendations %USERNAME%?',
-        'It\'s time for me to focus - %USERNAME% any good music album you would recommend?'
+        'It\'s time for me to focus - %USERNAME% any good music album you would recommend?',
+        'What\'s your favorite quote? Bring on some inspiration, %USERNAME%!'
+        'What can you see behind your window, %USERNAME%?'
+        'I\'m bored of living in Slack, it\'s time to travel. %USERNAME%, can you post a Google Street View of your favorite location in the world? :)'
     ];
 
     public function getRandomMessageForUser(User $user)
