@@ -81,3 +81,5 @@ In order to run tests pleas type inside the container:
 ```
 ./bin/phpspec run
 ```
+
+Maintained by the [developers at x-team](https://www.x-team.com) | [developer blog](https://www.x-team.com/blog/)
